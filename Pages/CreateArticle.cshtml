@@ -4,13 +4,7 @@
     ViewData["Title"] = "ایجاد مقاله جدید";
 }
 <div class="col-12 mb-3">
-    @*     @if (Model.SuccessMessage !=null)
-     {
-
-    <div class="alert alert-success">
-            @Model.SuccessMessage;
-    </div>
-     }
+      
 
      @if (Model.ErrorMessage !=null)
      {
@@ -18,7 +12,7 @@
          <div class="alert alert-danger">
              @Model.ErrorMessage;
          </div>
-     }*@
+     }
 
     <div class="col-6 mr-auto ml-auto text-center">
         <h1 class="border-bottom">ایجاد مقالات جدید </h1>
@@ -46,7 +40,7 @@
 
         </div>
         <div class="form-group col-md-6">
-            <label asp-for="@Model.Command.PictureAlt"> </label>
+            <label asp-for="@Model.Command.PictureTitle"> </label>
             <input class="form-control" asp-for="@Model.Command.PictureTitle">
             <span asp-validation-for="@Model.Command.PictureTitle" class="text-danger"></span>
         </div>
@@ -59,8 +53,8 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="body">متن مقاله</label>
-        <textarea rows="5" type="text" class="form-control" name="body" id="body"></textarea>
+        <label asp-for="@Model.Command.Body"> </label>
+        <textarea rows="5" type="text" class="form-control" asp-for="@Model.Command.Body" id="body"></textarea>
     </div>
     <button type="submit" class="btn btn-success">ارسال</button>
 </form>

@@ -12,8 +12,7 @@ namespace RazorBlog.Pages
         [TempData]
         public string ErrorMessage { get; set; }
 
-        [TempData]
-        public string SuccessMessage { get; set; }
+     
 
 
         private readonly BlogContext _blogContext;
@@ -28,7 +27,7 @@ namespace RazorBlog.Pages
 
         }
 
-        public void OnPost(CreateArticle command)
+        public IActionResult OnPost(CreateArticle command)
         {
 
             if (ModelState.IsValid)
@@ -38,11 +37,12 @@ namespace RazorBlog.Pages
                     command.ShortDescription, command.Body);
                 _blogContext.Articles.Add(article);
                 _blogContext.SaveChanges();
-                SuccessMessage = "مقاله با موفقیت ذخیره شد";
+                return RedirectToPage("./Index");
             }
             else
             {
                 ErrorMessage = "لطفا مقادیر خواسته شده را تکمیل نمایید";
+                return Page();
             }
        
         }
