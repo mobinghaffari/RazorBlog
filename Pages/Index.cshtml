@@ -22,8 +22,9 @@
                   @article.ShortDescription
                 </p>
                 <a asp-page="./articleDetails" asp-route-id="@article.Id" class="btn btn-primary">ادامه مطلب</a>
+                <a asp-page-handler="Delete" asp-route-id="@article.Id" class="btn btn-danger">حذف</a>
             </div>
         </div>
     </div>
-}//video10
+}
 

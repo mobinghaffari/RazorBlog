@@ -10,6 +10,7 @@
         public string PictureTitle { get; set; }
         public string ShortDescription { get; set; }
         public string Body { get; set; }
+        public bool IsDeleted { get; set; }
         public DateTime CreationDate { get; set; }
          
         public Article(string? title, string picture, string pictureAlt, 
@@ -22,6 +23,7 @@
             ShortDescription = shortDescription;
             Body = body;
             CreationDate = DateTime.Now;
+            IsDeleted = false; 
         }
     
     }

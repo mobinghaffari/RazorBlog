@@ -17,7 +17,7 @@ namespace RazorBlog.Pages
 
         public void OnGet()
         {
-            Articles = _blogContext.Articles.Select(x => new ArticleViewModel
+            Articles = _blogContext.Articles.Where(x=>x.IsDeleted==false).Select(x => new ArticleViewModel
             {
                 Id = x.Id,
                 Title = x.Title,
@@ -27,6 +27,14 @@ namespace RazorBlog.Pages
                 ShortDescription = x.ShortDescription,
                 }).OrderByDescending(x=>x.Id).ToList();
 
+        }
+
+        public IActionResult OnGetDelete(int id)
+        {
+            var article = _blogContext.Articles.First(x=>x.Id==id);
+            article.IsDeleted=true;
+            _blogContext.SaveChanges();
+            return RedirectToPage("./Index");
         }
     }
 }
